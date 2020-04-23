@@ -31,8 +31,7 @@ def valid(post, files):
 
 def getTags(s):
 	arr = s.split(',')
-	for ele in arr[:]:
-		ele = ele.strip()
+	arr = list(map(lambda tag: tag.strip(), arr))
 	return arr
 
 
@@ -49,6 +48,8 @@ def getaccessArray(s):
 
 	return ar
 
+
+@login_required(login_url='/authenticate')
 def upload(request):
 
 	if request.method == "POST":

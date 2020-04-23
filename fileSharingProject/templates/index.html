@@ -2,6 +2,65 @@
 
 {% block content %}
 
+<nav class="navbar navbar-expand-lg navbar-light my-1" style="background-color: #e3f2fd;">
+	<div class="nav-item">
+		<!-- Button trigger modal -->
+        <button type="button" class="btn btn-success mr-auto mb-2 my-auto" data-toggle="modal" data-target="#uploadModal">
+        	upload
+        </button>
+	</div>
+
+	<form class="ml-auto" action="/search">
+	  <div class="form-row align-items-center">
+	    <div class="col-auto nav-item" style="padding: 0;">
+	      <label class="sr-only" for="inlineFormInput">Lecturer Name</label>
+	      <input type="text" class="form-control mb-2 my-auto" id="inlineFormInput" placeholder="Lecturer Name" name="lecturer_name">
+	    </div>
+
+		<div class="col-auto nav-item or">
+			<span>-or-</span>
+		</div>
+
+	    <div class="col-auto nav-item" style="padding: 0;">
+	      <label class="sr-only" for="inlineFormInputGroup">Tags</label>
+	      <div class="input-group mb-2 my-auto">
+	        <div class="input-group-prepend">
+	          <div class="input-group-text">@</div>
+	        </div>
+	        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Tags" name="tags">
+	      </div>
+	    </div>
+		
+		<div class="col-auto nav-item or">
+			<span>-or-</span>
+		</div>
+
+	    <div class="col-auto nav-item">
+	      <div class="form-check" style="padding: 0;">
+	        <select class="custom-select" id="inlineFormCustomSelect" name="year">
+		        <option selected value="1">1st Year</option>
+		        <option value="2">2nd Year</option>
+		        <option value="3">3rd Year</option>
+		        <option value="4">4th Year</option>
+		     </select>
+	      </div>
+	    </div>
+
+	    <div class="col-auto nav-item">
+	      <div class="form-check" style="padding: 0;">
+	        <select class="custom-select" id="inlineFormCustomSelect" name="sem">
+		        <option selected value="1">1st Sem</option>
+		        <option value="2">2nd Sem</option>
+		     </select>
+	      </div>
+	    </div>
+
+	    <div class="col-auto nav-item">
+	      <button type="submit" class="btn btn-primary mb-2 my-auto search_submit">Search</button>
+	    </div>
+	  </div>
+	</form>
+</nav>
 
 <div class="container">
 	{% for img in imgs %}
