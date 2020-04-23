@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+	{% for img in imgs %}
+		<div class="row">
+			<a href="/media/{{img}}"> img </a>
+		</div>
+	{% endfor %}
+
+
+	{% for vid in vids %}
+		<div class="row">
+			<a href="/media/{{vid}}"> vid </a>
+		</div>
+	{% endfor %}
+
+
+	{% for pdf in pdfs %}
+		<div class="row">
+			<a href="/media/{{pdf}}">pdf</a>
+		</div>
+	{% endfor %}
+
+
+	{% for doc in docs %}
+		<div class="row">
+			<a href="/media/{{doc}}">doc</a>
+		</div>
+	{% endfor %}
+
+
+	{% for ppt in ppts %}
+		<div class="row">
+			<a href="/media/{{ppt}}">ppt</a>
+		</div>
+	{% endfor %}
+
+
+	{% for word in words %}
+		<div class="row">
+			<a href="/media/{{word}}">word</a>
+		</div>
+	{% endfor %}
+
+
+	{% for txt in txts %}
+		<div class="row">
+			<a href="/media/{{txt}}">txt</a>
+		</div>
+	{% endfor %}
+
+
+	{% for unkown in unkowns %}
+		<div class="row">
+			<a href="/media/{{unkown}}">unkown</a>
+		</div>
+	{% endfor %}
+
+</div>
+
+
+
+{% for message in messages %}
+    <div class="toast mr-auto ml-auto" role="alert" aria-live="assertive" aria-atomic="true" data-delay='10000' style="position: absolute; left:45%; top: 8%; transform: translate(-50%, -50%);">
+      <div class="toast-body">
+        {{message}}
+      </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

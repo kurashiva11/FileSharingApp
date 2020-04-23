@@ -1,0 +1,122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>FileSharing</title>
+
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- favicon -->
+
+
+    <!-- bootsptrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+	<!-- As a heading -->
+	<nav class="navbar navbar-light bg-light">
+	  <span class="navbar-brand mb-0 h1 ml-auto mr-auto">File Sharing System</span>
+	</nav>
+
+	<div class="container">
+	  <div class="row mt-5 ml-auto mr-auto">
+	    <div class="ml-auto mr-auto">
+	      <div class="card ml-auto mr-auto" style="width: 70vw;">
+	        <div class="card-header">
+	          <ul class="nav nav-tabs card-header-tabs" id="bologna-list" role="tablist">
+	            <li class="nav-item">
+	              <a class="nav-link active" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link"  href="#Register" role="tab" aria-controls="Register" aria-selected="false">Register</a>
+	            </li>
+	          </ul>
+	        </div>
+	        <div class="card-body" style="text-align: center;">
+	        
+	           <div class="tab-content mt-3">
+	            <div class="tab-pane active" id="login" role="tabpanel">
+
+					<form action="login" method="POST">
+	
+						{% csrf_token %}
+
+						<br>
+						<span>username : </span>
+						<input type="text" placeholder="Username" name="username" autofocus autocomplete="off">
+						<br><br>
+						<span>password : </span>
+						<input type="password" placeholder="Password" name="password" autocomplete="off">
+						<br><br>
+						<button type="submit" class="btn btn-primary">Login</button>
+						<br>
+					</form>
+
+	            </div>
+	             
+	            <div class="tab-pane" id="Register" role="tabpanel" aria-labelledby="Register-tab">  
+
+					<form action="register" method="post">
+
+						{% csrf_token %}
+
+						<span>Firstname : </span>
+						<input type="text" name="firstname" placeholder="Firstname" autofocus autocomplete="off" name="firstname">
+						<br><br>
+						<span>Lastname : </span>
+						<input type="text" name="lastname" placeholder="Lastname" autofocus autocomplete="off" name="lastname">
+						<br><br>
+						<span>Username : </span>
+						<input type="text" name="username" placeholder="Username" autofocus autocomplete="off" name="username">
+						<br><br>
+						<span>Email : </span>
+						<input type="text" name="email" placeholder="Email" autofocus autocomplete="off" name="email">
+						<br><br>
+						<span>Password : </span>
+						<input type="password" name="password" placeholder="Password" autocomplete="off" name="password">
+						<br><br>
+						<span>Retype password : </span>
+						<input type="password" name="repassword" placeholder="Retype Password" autocomplete="off" name="repassword">
+						<br><br>
+						<button type="submit" class="btn btn-primary">Register</button>
+						<br>
+					</form>
+
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	{% for message in messages %}
+	    <div class="toast mr-auto ml-auto" role="alert" aria-live="assertive" aria-atomic="true" data-delay='10000' style="position: absolute; left:45%; top: 8%; transform: translate(-50%, -50%);">
+	      <div class="toast-body">
+	        {{message}}
+	      </div>
+	    </div>
+	{% endfor %}
+
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script>
+		$('#bologna-list a').on('click', function (e) {
+		  e.preventDefault()
+		  $(this).tab('show')
+		})
+		$('.toast').toast('show');
+	</script>
+</body>
+
+</html>
