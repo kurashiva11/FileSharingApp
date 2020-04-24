@@ -24,10 +24,11 @@
 
 </head>
 <body>
-	
+	<div class="body_for_ajax">
+
 	<!-- navbar similar to bs4 -->
 	<!-- Image and text -->
-	<nav class="navbar navbar-light bg-light sticky-top">
+	<nav class="navbar navbar-light bg-light sticky-top" style="z-index: -1;">
 		{% if user.is_authenticated %}
 	  	<a class="navbar-brand" href="#">
 	    	<img src="{% static 'img/fs.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -41,9 +42,6 @@
 	{% block content %}
 
     {% endblock %}
-
-
-<span class="py-1" style="padding: 4rem width=100%"></span></span>
 
 	<!-- Modal -->
 	<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -100,7 +98,7 @@
 
 
 	{% for message in messages %}
-	    <div class="toast mr-auto ml-auto" role="alert" aria-live="assertive" aria-atomic="true" data-delay='10000' style="position: absolute; left:45%; top: 8%; transform: translate(-50%, -50%);">
+	    <div class="toast mr-auto ml-auto" role="alert" aria-live="assertive" aria-atomic="true" data-delay='5000' style="position: fixed; top: 90vh; right:0; transform: translate(-50%, -50%); z-index: 1">
 	      <div class="toast-body">
 	        {{message}}
 	      </div>
@@ -116,6 +114,12 @@
 	<!-- font awesome -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 
+	<script>
+		$('.toast').toast('show');
+	</script>
+
 	<script src="{% static 'index.js' %}"></script>
+
+	</div>
 </body>
 </html>

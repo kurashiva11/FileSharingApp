@@ -70,7 +70,9 @@
 	{% for img in imgs %}
 		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{img}}"> img </a>
-			<i class='fas fa-trash-alt my-auto ml-auto mr-3' id="{{img}}" aria-hidden="true"></i>
+			<div class="deleteicon my-auto ml-auto mr-3">
+				<i class='fas fa-trash-alt' id="{{img}}" aria-hidden="true"></i>
+			</div>
 		</div>
 	{% endfor %}
 
@@ -78,7 +80,9 @@
 	{% for vid in vids %}
 		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{vid}}"> vid </a>
-			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{vid}}" aria-hidden="true"></i>
+			<div class="deleteicon my-auto ml-auto mr-3">
+				<i class="fas fa-trash-alt" id="{{vid}}" aria-hidden="true"></i>
+			</div>
 		</div>
 	{% endfor %}
 
@@ -86,7 +90,9 @@
 	{% for pdf in pdfs %}
 		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{pdf}}">pdf</a>
-			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{pdf}}" aria-hidden="true"></i>
+			<div class="deleteicon my-auto ml-auto mr-3">
+				<i class="fas fa-trash-alt" id="{{pdf}}" aria-hidden="true"></i>
+			</div>
 		</div>
 	{% endfor %}
 
@@ -94,7 +100,9 @@
 	{% for doc in docs %}
 		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{doc}}">doc</a>
-			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{doc}}" aria-hidden="true"></i>
+			<div class="deleteicon my-auto ml-auto mr-3">
+				<i class="fas fa-trash-alt" id="{{doc}}" aria-hidden="true"></i>
+			</div>
 		</div>
 	{% endfor %}
 
@@ -102,7 +110,9 @@
 	{% for ppt in ppts %}
 		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{ppt}}">ppt</a>
-			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{ppt}}" aria-hidden="true"></i>
+			<div class="deleteicon my-auto ml-auto mr-3">
+				<i class="fas fa-trash-alt" id="{{ppt}}" aria-hidden="true"></i>
+			</div>
 		</div>
 	{% endfor %}
 
@@ -110,7 +120,9 @@
 	{% for word in words %}
 		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{word}}">word</a>
-			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{word}}" aria-hidden="true"></i>
+			<div class="deleteicon my-auto ml-auto mr-3">
+				<i class="fas fa-trash-alt" id="{{word}}" aria-hidden="true"></i>
+			</div>
 		</div>
 	{% endfor %}
 
@@ -118,7 +130,9 @@
 	{% for txt in txts %}
 		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{txt}}">txt</a>
-			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{txt}}" aria-hidden="true"></i>
+			<div class="deleteicon my-auto ml-auto mr-3">
+				<i class="fas fa-trash-alt" id="{{txt}}" aria-hidden="true"></i>
+			</div>
 		</div>
 	{% endfor %}
 
@@ -126,20 +140,12 @@
 	{% for unkown in unkowns %}
 		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{unkown}}">unkown</a>
-			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{unkown}}" aria-hidden="true"></i>
+			<div class="deleteicon my-auto ml-auto mr-3">
+				<i class="fas fa-trash-alt" id="{{unkown}}" aria-hidden="true"></i>
+			</div>
 		</div>
 	{% endfor %}
 
 </div>
-
-
-
-{% for message in messages %}
-    <div class="toast mr-auto ml-auto" role="alert" aria-live="assertive" aria-atomic="true" data-delay='10000' style="position: absolute; left:45%; top: 8%; transform: translate(-50%, -50%);">
-      <div class="toast-body">
-        {{message}}
-      </div>
-    </div>
-{% endfor %}
 
 {% endblock %}

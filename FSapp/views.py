@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from uploadFiles.models import uploadFile
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 import os
@@ -70,7 +71,6 @@ def fshome(request):
 		user = User.objects.get(username=request.user)
 		folder_name = 'user_' + str(user.id)
 		filtered_files = uploadFile.objects.filter(user=user)
-
 		return render(request, "index.html", sendFiles(filtered_files))
 
 	return redirect('/authenticate')
@@ -103,6 +103,7 @@ def search(request):
 		if lecturer_name != '':
 			filtered_files = uploadFile.objects.filter( give_access_to__overlap = switcher[request.user.last_name] ).filter(lecturer_name=lecturer_name)
 			
+			messages.info(request, "retived data based on lecturer name")
 			return render(request, "index.html", sendFiles(filtered_files))
 
 		elif tags != '':
@@ -111,13 +112,16 @@ def search(request):
 
 			filtered_files = uploadFile.objects.filter( give_access_to__overlap = switcher[request.user.last_name] ).filter(tags__overlap=tags)
 			
+			messages.info(request, "retived data based on tags")
 			return render(request, "index.html", sendFiles(filtered_files))
 
 		else:
 			filtered_files = uploadFile.objects.filter( give_access_to__overlap = switcher[request.user.last_name] ).filter(year=year).filter(semister=sem)
 			
+			messages.info(request, "retived data based on year & semister")
 			return render(request, "index.html", sendFiles(filtered_files))
 
+		messages.info(request, "searching unsuccessful.\nPlease try again")
 		return redirect('/')
 
 	except Exception as e:

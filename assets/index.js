@@ -21,15 +21,19 @@ $(function(){
 	// 		console.log("serch on year");
 	// 	}
 	// });
-	
+
 	$(".fa-trash-alt").click(function() {
 		console.log($(this).attr('id'))
+		var deletefile = $(this)
+		deletefile.parent().html("deleting <div class='spinner-border spinner-border-sm text-danger'></div>")
+
 		$.ajax({
                 type: "get",
                 url: "/file/deleteFile",
-                data: {"filename": $(this).attr('id')},
+                data: {"filename": deletefile.attr('id')},
                 success: function(data){
-                	location.reload();
+                	$('.body_for_ajax').html( $(data).filter('.body_for_ajax').html() )
+					console.log(deletefile.parent())
                 },
                 error: function(e){
                     alert("something went wrong while deleting file");

@@ -96,19 +96,18 @@ def deleteFile(request):
 				if os.path.exists(f"uploaded_media/{request.GET['filename']}"):
 					os.remove(f"uploaded_media/{request.GET['filename']}")
 				else:
-					messages.info(request, "The file does not exist, but the object inserver is deleted.")
-					print("The file does not exist, but the object inserver is deleted.")
+					messages.info(request, "The file deleted in DB, but still exists in File System of server.")
+					print("The file deleted in DB, but still exists in File System of server.")
 					return redirect('/')
 
 				messages.info(request, "file deleted successfully.")
 				return redirect('/')
 		else:																					# only executes when file not deleted.
-			messages.info(request, "Your not uploaded this file, so you cant delete the file.")
+			messages.info(request, "Your not uploaded this file\nYou cant delete the file.")
 			return redirect('/')
 
 	else:
 		messages.inf(request, "sorry something went wrong.\nfile name is empty.")
 		return redirect('/')
-
 
 	return redirect('/')
