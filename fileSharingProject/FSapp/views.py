@@ -47,8 +47,7 @@ def sendFiles(filtered_files):
 		else:
 			# print(file.file, "added to unkoun")
 			filtered_unkown_paths.append(file.file)
-
-
+			
 	# print('\n\n')
 	return {
 		'imgs': filtered_img_paths,
