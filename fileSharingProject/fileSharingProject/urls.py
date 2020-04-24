@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('authenticate/', include('authenticate.urls')),
     path('', include('FSapp.urls')),
-    path('uploadfile', include('uploadFiles.urls')),
+    path('file/', include('uploadFiles.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

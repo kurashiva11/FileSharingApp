@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
 {% block content %}
 
 <nav class="navbar navbar-expand-lg navbar-light my-1" style="background-color: #e3f2fd;">
@@ -64,57 +68,65 @@
 
 <div class="container">
 	{% for img in imgs %}
-		<div class="row">
+		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{img}}"> img </a>
+			<i class='fas fa-trash-alt my-auto ml-auto mr-3' id="{{img}}" aria-hidden="true"></i>
 		</div>
 	{% endfor %}
 
 
 	{% for vid in vids %}
-		<div class="row">
+		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{vid}}"> vid </a>
+			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{vid}}" aria-hidden="true"></i>
 		</div>
 	{% endfor %}
 
 
 	{% for pdf in pdfs %}
-		<div class="row">
+		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{pdf}}">pdf</a>
+			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{pdf}}" aria-hidden="true"></i>
 		</div>
 	{% endfor %}
 
 
 	{% for doc in docs %}
-		<div class="row">
+		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{doc}}">doc</a>
+			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{doc}}" aria-hidden="true"></i>
 		</div>
 	{% endfor %}
 
 
 	{% for ppt in ppts %}
-		<div class="row">
+		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{ppt}}">ppt</a>
+			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{ppt}}" aria-hidden="true"></i>
 		</div>
 	{% endfor %}
 
 
 	{% for word in words %}
-		<div class="row">
+		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{word}}">word</a>
+			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{word}}" aria-hidden="true"></i>
 		</div>
 	{% endfor %}
 
 
 	{% for txt in txts %}
-		<div class="row">
+		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{txt}}">txt</a>
+			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{txt}}" aria-hidden="true"></i>
 		</div>
 	{% endfor %}
 
 
 	{% for unkown in unkowns %}
-		<div class="row">
+		<div class="row" style="border-radius: 5px;">
 			<a href="/media/{{unkown}}">unkown</a>
+			<i class="fas fa-trash-alt my-auto ml-auto mr-3" id="{{unkown}}" aria-hidden="true"></i>
 		</div>
 	{% endfor %}
 

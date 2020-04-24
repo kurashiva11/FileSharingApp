@@ -19,7 +19,7 @@ def login(request):
 
 		if user is not None:
 			auth.login(request, user)
-			return render(request, 'index.html')
+			return redirect('/')
 		else:
 			messages.info(request, "user does not exists, please register or may be password wrong")
 			return redirect('/authenticate')

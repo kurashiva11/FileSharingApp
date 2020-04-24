@@ -20,38 +20,36 @@ def sendFiles(filtered_files):
 	
 	for file in filtered_files:
 		file_extention = str(file.file).split('.')[-1].strip()
-		print(file_extention, end=' <=> ')
-		
 		if file_extention in ['jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG', 'PNG', 'GIF']:
-			print(file.file, "added to pic")
+			# print(file.file, "added to pic")
 			filtered_img_paths.append(file.file)
 
 		elif file_extention in ['mpg', 'mov', 'mp4', 'avi', 'webm', 'ogg', 'MPG', 'MOV', 'MP4', 'AVI', 'WEBM', 'OGG']:
-			print(file.file, "added to vid")
+			# print(file.file, "added to vid")
 			filtered_vid_paths.append(file.file)
 		
 		elif file_extention in ['pdf', 'PDF']:
-			print(file.file, "added to pdf")
+			# print(file.file, "added to pdf")
 			filtered_pdf_paths.append(file.file)
 		
 		elif file_extention in ['doc', 'docx', 'dot', 'DOC', 'DOCX', 'DOT']:
-			print(file.file, "added to word")
+			# print(file.file, "added to word")
 			filtered_word_paths.append(file.file)
 		
 		elif file_extention in ['ppt', 'pptx', 'PPT', 'PPTX']:
-			print(file.file, "added to ppt")
+			# print(file.file, "added to ppt")
 			filtered_ppt_paths.append(file.file)
 		
 		elif file_extention == ['txt', 'TXT']:
-			print(file.file, "added to txt")
+			# print(file.file, "added to txt")
 			filtered_txt_paths.append(file.file)
 		
 		else:
-			print(file.file, "added to unkoun")
+			# print(file.file, "added to unkoun")
 			filtered_unkown_paths.append(file.file)
 
 
-	print('\n\n')
+	# print('\n\n')
 	return {
 		'imgs': filtered_img_paths,
 		'vids': filtered_vid_paths,
@@ -65,21 +63,28 @@ def sendFiles(filtered_files):
 
 
 
+
+
+
 def fshome(request):
 	if request.user.is_authenticated:
-		# print("user = ", user.id)
 		user = User.objects.get(username=request.user)
 		folder_name = 'user_' + str(user.id)
-		print('\n\n\n', BASE_DIR, "   <=>  ", os.path.join(f'{BASE_DIR}/uploaded_media/', folder_name), '\n\n\n')
-		# os.system(f'cd {BASE_DIR}/uploaded_media/{folder_name} && dir')
-		
 		filtered_files = uploadFile.objects.filter(user=user)
+
 		return render(request, "index.html", sendFiles(filtered_files))
 
 	return redirect('/authenticate')
 
 
 
+
+switcher = {
+	'Students': ['Students'],
+	'Lecturers': ['Students', 'Lecturers'],
+	'HODS': ['Students', 'Lecturers', 'HODS'],
+	'Principal': ['Students', 'Lecturers', 'HODS', 'Principal']
+}
 
 
 @login_required(login_url='/authenticate')
@@ -92,11 +97,12 @@ def search(request):
 	try:
 		lecturer_name = query['lecturer_name']
 		tags = query['tags']
-		year = query['year']
-		sem = query['sem']
-		print(lecturer_name, tags, year, sem, len(tags))
+		year = int(query['year'])
+		sem = int(query['sem'])
+		# print(year, sem)
+
 		if lecturer_name != '':
-			filtered_files = uploadFile.objects.filter(lecturer_name=lecturer_name)
+			filtered_files = uploadFile.objects.filter( give_access_to__overlap = switcher[request.user.last_name] ).filter(lecturer_name=lecturer_name)
 			
 			return render(request, "index.html", sendFiles(filtered_files))
 
@@ -104,12 +110,12 @@ def search(request):
 			tags = tags.split(',')
 			tags = list(map(lambda tag: tag.strip(), tags))
 
-			filtered_files = uploadFile.objects.filter(tags=tags)
+			filtered_files = uploadFile.objects.filter( give_access_to__overlap = switcher[request.user.last_name] ).filter(tags__overlap=tags)
 			
 			return render(request, "index.html", sendFiles(filtered_files))
 
 		else:
-			filtered_files = uploadFile.objects.filter(year=year).filter(semister=sem)
+			filtered_files = uploadFile.objects.filter( give_access_to__overlap = switcher[request.user.last_name] ).filter(year=year).filter(semister=sem)
 			
 			return render(request, "index.html", sendFiles(filtered_files))
 

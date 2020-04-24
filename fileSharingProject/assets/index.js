@@ -22,5 +22,19 @@ $(function(){
 	// 	}
 	// });
 	
+	$(".fa-trash-alt").click(function() {
+		console.log($(this).attr('id'))
+		$.ajax({
+                type: "get",
+                url: "/file/deleteFile",
+                data: {"filename": $(this).attr('id')},
+                success: function(data){
+                	location.reload();
+                },
+                error: function(e){
+                    alert("something went wrong while deleting file");
+                }
+        });
+	});
 
 });

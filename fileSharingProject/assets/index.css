@@ -9,3 +9,7 @@ footer{
 	background-color: #cfcccc;
 	margin-top: 0.5rem;
 }
+
+.fa-trash-alt{
+	cursor: pointer;
+}

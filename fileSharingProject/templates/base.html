@@ -15,6 +15,9 @@
 
     <!-- bootsptrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
+	<!-- font awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <!-- my stylesheet -->
     <link rel="stylesheet" href="{% static 'index.css' %}">
@@ -52,40 +55,33 @@
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
-		  <form action="uploadfile" method="post" enctype="multipart/form-data">
+		  <form action="/file/upload" method="post" enctype="multipart/form-data">
 
 				{% csrf_token %}
 				{{ form.as_p }}
 
 	      	<div class="modal-body">
-	        
-				<input type="text" placeholder="Filename To Save" autocomplete="off" name="filename">
-				
 				<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="give_access_to">
 				    <option selected>All</option>
-				    <option value="1">Students</option>
-				    <option value="2">Lecturers</option>
-				    <option value="2">HODS</option>
-				    <option value="3">Principal</option>
+				    <option value="Students">Students</option>
+				    <option value="Lecturers">Lecturers</option>
+				    <option value="HODS">HODS</option>
+				    <option value="Principal">Principal</option>
 				</select>
 
 				<input type="textarea" placeholder="Enter tags, so that it will make serch of file easy" name="tags">
 
 				<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="year">
-				    <option selected>1st year</option>
-				    <option value="1">2nd year</option>
-				    <option value="2">3rd year</option>
-				    <option value="2">4th year</option>
+				    <option selected value="1">1st year</option>
+				    <option value="2">2nd year</option>
+				    <option value="3">3rd year</option>
+				    <option value="4">4th year</option>
 				</select>
 
 				<select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="sem">
-				    <option selected>1st sem</option>
-				    <option value="1">2nd sem</option>
+				    <option selected value="1">1st sem</option>
+				    <option value="2">2nd sem</option>
 				</select>
-
-				<input type="text" placeholder="enter subject name" name="subject">
-				
-				<input type="text" placeholder="enter lecturer name" name="lecturer">
 		
 			    <input type="file" name="file">
 	
@@ -112,9 +108,13 @@
     {% endfor %}
 
 
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<!-- font awesome -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 
 	<script src="{% static 'index.js' %}"></script>
 </body>

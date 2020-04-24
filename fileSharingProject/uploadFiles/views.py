@@ -8,14 +8,11 @@ from .models import uploadFile
 
 import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Create your views here.
 
 def valid(post, files):
 	try:
-		print(post, '\n\n', files, type(post['give_access_to']))
-		if post['filename'] == '' or post['filename']==None:
-			return False;
-
 		if post['give_access_to']=='' or post['give_access_to']==None:
 			return False
 
@@ -24,6 +21,7 @@ def valid(post, files):
 
 		if len(files['file']) == 0:
 			return False
+
 	except MultiValueDictKeyError as e:
 		return False
 	return True
@@ -49,24 +47,22 @@ def getaccessArray(s):
 	return ar
 
 
+
+
+
+
 @login_required(login_url='/authenticate')
 def upload(request):
 
 	if request.method == "POST":
-
 		if valid(request.POST, request.FILES):
-			# request.POST['tags'] += ', ' +  request.POST['filename']
 			newfile = uploadFile(
-				filename = request.POST['filename'],
 				file = request.FILES['file'],
-
 				give_access_to = getaccessArray(request.POST['give_access_to']),
-
 				tags = getTags(request.POST['tags']),
-				year = 1,
-				semister = 1,
-				subject = request.POST['subject'],
-				lecturer_name = request.POST['lecturer'],
+				year = int(request.POST['year']),
+				semister = int(request.POST['sem']),
+				lecturer_name = request.user.first_name,
 				user = request.user
 				)
 
@@ -75,6 +71,44 @@ def upload(request):
 
 		else:
 			messages.info(request, "something went wrong\nfile not uploaded")
+
+
+	return redirect('/')
+
+
+
+
+
+
+
+@login_required(login_url='/authenticate')
+def deleteFile(request):
+	# print(BASE_DIR)
+	if request.GET['filename'] != '':
+		filtered_file = uploadFile.objects.filter(file=request.GET['filename'])
+
+		for file in filtered_file:
+			if file.user == request.user:
+
+				filtered_file.delete()
+				print(os.path.join(BASE_DIR, f"uploaded_media/{request.GET['filename']}"))
+
+				if os.path.exists(f"uploaded_media/{request.GET['filename']}"):
+					os.remove(f"uploaded_media/{request.GET['filename']}")
+				else:
+					messages.info(request, "The file does not exist, but the object inserver is deleted.")
+					print("The file does not exist, but the object inserver is deleted.")
+					return redirect('/')
+
+				messages.info(request, "file deleted successfully.")
+				return redirect('/')
+		else:																					# only executes when file not deleted.
+			messages.info(request, "Your not uploaded this file, so you cant delete the file.")
+			return redirect('/')
+
+	else:
+		messages.inf(request, "sorry something went wrong.\nfile name is empty.")
+		return redirect('/')
 
 
 	return redirect('/')

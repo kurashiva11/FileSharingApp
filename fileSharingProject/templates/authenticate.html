@@ -67,11 +67,17 @@
 
 						{% csrf_token %}
 
-						<span>Firstname : </span>
-						<input type="text" name="firstname" placeholder="Firstname" autofocus autocomplete="off" name="firstname">
+						<span>Name : </span>
+						<input type="text" name="firstname" placeholder="Name" autofocus autocomplete="off" name="firstname">
 						<br><br>
-						<span>Lastname : </span>
-						<input type="text" name="lastname" placeholder="Lastname" autofocus autocomplete="off" name="lastname">
+						<span>You are a : </span>
+						<select class="custom-select" style="width: 10rem" id="inlineFormCustomSelectPref" name="lastname">
+						    <option value="Students">Student</option>
+						    <option value="Lecturers">Lecturer</option>
+						    <option value="HODs">HOD</option>
+						    <option value="Principals">Principal</option>
+						</select>
+
 						<br><br>
 						<span>Username : </span>
 						<input type="text" name="username" placeholder="Username" autofocus autocomplete="off" name="username">
