@@ -47,6 +47,10 @@ def register(request):
 			messages.info(request, "fields can't be empty")
 			return redirect('/authenticate')
 
+		if lastname not in ['Students', 'Lecturers', 'HODS', 'Principals']:
+			messages.info(request, "you must be either of them.\nPrincipal, HOD, Lecturer, Student")
+			return redirect('/authenticate')
+
 		if password == repassword:
 
 			try:

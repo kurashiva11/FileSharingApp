@@ -28,14 +28,14 @@
 
 	<!-- navbar similar to bs4 -->
 	<!-- Image and text -->
-	<nav class="navbar navbar-light bg-light sticky-top" style="z-index: -1;">
+	<nav class="navbar navbar-light bg-light sticky-top">
 		{% if user.is_authenticated %}
 	  	<a class="navbar-brand" href="#">
 	    	<img src="{% static 'img/fs.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
 	    	{{user}}
 	  	</a>
 
-	  	<a type="button" class="btn btn-outline-secondary ml-auto mr-3" href="/authenticate/signout">Logout</a>
+	  	<a class="btn btn-outline-danger mr-3" href="/authenticate/signout">Logout</a>
 	  	{% endif %}
 	</nav>
 	
@@ -98,7 +98,7 @@
 
 
 	{% for message in messages %}
-	    <div class="toast mr-auto ml-auto" role="alert" aria-live="assertive" aria-atomic="true" data-delay='5000' style="position: fixed; top: 90vh; right:0; transform: translate(-50%, -50%); z-index: 1">
+	    <div class="toast mr-auto ml-auto" role="alert" aria-live="assertive" aria-atomic="true" data-delay='5000' style="position: fixed; top: 90vh; right:0; transform: translate(-50%, -50%);">
 	      <div class="toast-body">
 	        {{message}}
 	      </div>

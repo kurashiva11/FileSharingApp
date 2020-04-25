@@ -91,13 +91,11 @@ def deleteFile(request):
 			if file.user == request.user:
 
 				filtered_file.delete()
-				print(os.path.join(BASE_DIR, f"uploaded_media/{request.GET['filename']}"))
 
 				if os.path.exists(f"uploaded_media/{request.GET['filename']}"):
 					os.remove(f"uploaded_media/{request.GET['filename']}")
 				else:
 					messages.info(request, "The file deleted in DB, but still exists in File System of server.")
-					print("The file deleted in DB, but still exists in File System of server.")
 					return redirect('/')
 
 				messages.info(request, "file deleted successfully.")

@@ -100,6 +100,7 @@ def search(request):
 		sem = int(query['sem'])
 		# print(year, sem)
 
+
 		if lecturer_name != '':
 			filtered_files = uploadFile.objects.filter( give_access_to__overlap = switcher[request.user.last_name] ).filter(lecturer_name=lecturer_name)
 			
@@ -125,5 +126,5 @@ def search(request):
 		return redirect('/')
 
 	except Exception as e:
-		return HttpResponse("some unkown error occuered.")
+		return HttpResponse(f"some unkown error occuered. + {e}")
 	
