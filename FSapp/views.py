@@ -82,7 +82,7 @@ switcher = {
 	'Students': ['Students'],
 	'Lecturers': ['Students', 'Lecturers'],
 	'HODS': ['Students', 'Lecturers', 'HODS'],
-	'Principal': ['Students', 'Lecturers', 'HODS', 'Principal']
+	'Principals': ['Students', 'Lecturers', 'HODS', 'Principals']
 }
 
 
